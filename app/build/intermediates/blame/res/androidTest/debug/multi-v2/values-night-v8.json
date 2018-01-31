@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\Dani\\AndroidStudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dani\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d1ca04af4d84a61e7bc2f7beeec636c7\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593",
-                        "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "120,204,288,384,486,588,682"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\dani\\NoemiFlamenca\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\dani\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d1ca04af4d84a61e7bc2f7beeec636c7\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\Dani\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\442236a16ad1c19e2ef1c6661177702f\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",

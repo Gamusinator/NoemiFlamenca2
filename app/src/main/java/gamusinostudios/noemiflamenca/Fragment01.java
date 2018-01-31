@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 
 /*
@@ -26,11 +28,8 @@ public class Fragment01 extends Fragment {
 
     Button btnSiguiente, btnAnterior;
     ImageView galeria;
-    int[] fotoId = {
-            R.drawable.ic_menu_camera,
-            R.drawable.ic_menu_send,
-            R.drawable.ic_menu_gallery
-    };
+    String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/galeria/";
+    String[] nombresArchivos;
     int i = 0;
     int total;
 
@@ -39,6 +38,8 @@ public class Fragment01 extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_fragment01, container, false);
 
+        cargarArray(v);
+
         btnAnterior = v.findViewById(R.id.botonAnterior);
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
         galeria = v.findViewById(R.id.imageViewPrincipal);
@@ -46,33 +47,47 @@ public class Fragment01 extends Fragment {
         btnAnterior.setOnClickListener(listener);
         btnSiguiente.setOnClickListener(listener);
 
-        total = fotoId.length;
-
-        cargarImagen(v);
-
+        Picasso.with(v.getContext()).load(path+"/1.jpg").into(galeria);
         // Inflate the layout for this fragment
         return v;
     }
-
+    //Quan fem clic en un botó, siguiente o anterior...
     Button.OnClickListener listener = new Button.OnClickListener() {
         @Override
         public void onClick(View view) {
+            total = nombresArchivos.length;
             int id = view.getId();
             if(id == R.id.botonSiguiente){
-//                i++;
-//                if(i == total) i = 0;
-                Picasso.with(view.getContext()).load("https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/24909789_655290551527508_1181231841592933036_n.jpg?oh=9756ed45e70e42b812feb813cb63e247&oe=5ADD81DB").into(galeria);
+                i++;
+                if(i == total) i = 0;
             }
             if(id == R.id.botonAnterior){
-//                i--;
-//                if(i == -1) i = total-1;
-                Picasso.with(view.getContext()).load("https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/26733397_676320916091138_122622102907252329_n.jpg?oh=5f05fe9fb89203847de2500e921d7470&oe=5B1A27D4").into(galeria);
+                i--;
+                if(i == -1) i = total-1;
             }
-//            galeria.setImageResource(fotoId[i]);
+            //carreguem la imatge a l'ImageView
+            String urlfoto = path + nombresArchivos[i];
+            Picasso.with(view.getContext()).load(urlfoto).into(galeria);
         }
     };
 
-    public void cargarImagen(View v){
-        Picasso.with(v.getContext()).load("http://i.imgur.com/DvpvklR.png").into(galeria);
+    public void cargarArray(View v){
+        RequestQueue queue = Volley.newRequestQueue(v.getContext());
+        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/galeria.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                String string = response;
+                nombresArchivos = string.split(","); //Aquí tenemos la array cargada con los nombres de fichero
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Respuesta incorrecta
+            }
+        });
+        queue.add(stringRequest);
     }
 }

@@ -8,7 +8,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,15 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -129,22 +121,28 @@ public class MainActivity extends AppCompatActivity
         //Crea TextView
         final TextView miTextView = new TextView(getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(this);
-        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/listaGaleria.php";
+        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/galeria.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    //Respuesta correcta
-                    miTextView.setText("Resultado: "+response);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    //Respuesta incorrecta
-                    miTextView.setText("La base de datos tardó mucho en responder...");
-                }
-            });
-            queue.add(stringRequest);
+
+            @Override
+            public void onResponse(String response) {
+                //Respuesta correcta
+                //miTextView.setText("Resultado: " + response);
+                String string = response;
+                String[] parts = string.split(",");
+                String part1 = parts[0]; // 123
+                String part2 = parts[1]; // 654321
+                miTextView.setText(part2);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Respuesta incorrecta
+                miTextView.setText("La base de datos tardó mucho en responder...");
+            }
+        });
+        queue.add(stringRequest);
 
         //Agrega propiedades al TextView.
         miTextView.setTextColor(Color.BLUE);
@@ -153,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         contenedor.addView(miTextView);
     }
 
-    public void CompartirAPP(){
+    public void CompartirAPP() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, "La millor APP del mercat! (Aquí posarem el link de google play");
@@ -163,7 +161,5 @@ public class MainActivity extends AppCompatActivity
             //do something else
         }
     }
-
-
 }
 
