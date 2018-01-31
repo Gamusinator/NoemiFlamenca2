@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Noemí Flamenca</string>
+    <string name="menu_1">Vestidos</string>
+    <string name="menu_2">Faldas</string>
+    <string name="menu_3">Accesorios</string>
+    <string name="menu_4">Contacto</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="contacto_desc">Para contactar con nosotros, puedes enviarnos un correo electrónico o enviarnos un mensaje por nuestras redes sociales.</string>
+    <string name="correo">minoemiflamenca@gmail.com</string>
+    <string name="facebook">www.facebook.com/minoemiflamenca</string>
+    <string name="youtube">www.youtube.com/channel/UCJtN1kSAs8c_NALtv968WoA</string>
+    <string name="galeria">Fotos de Eventos</string>
+    <string name="galeria_anterior">Anterior</string>
+    <string name="galeria_siguiente">Siguiente</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
