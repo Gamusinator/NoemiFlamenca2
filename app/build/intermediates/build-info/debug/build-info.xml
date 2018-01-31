@@ -6,23 +6,71 @@
     density="xhdpi"
     format="10"
     plugin-version="3.0.1"
-    timestamp="1517396086037"
+    timestamp="1517397617047"
     token="7154688410364303859"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="4758" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="702" />
+        duration="0" />
     <task
         name="verifier"
-        duration="656" />
+        duration="0" />
 
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\outputs\apk\debug\app-debug.apk"
+        type="SPLIT_MAIN" />
+    <artifact
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
     <artifact
         location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
         type="SPLIT" />
@@ -30,40 +78,73 @@
         location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
         type="SPLIT" />
     <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-        type="SPLIT" />
-    <artifact
         location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
         type="SPLIT" />
     <artifact
         location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
         type="SPLIT" />
     <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-        type="SPLIT" />
-    <artifact
         location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
         type="SPLIT" />
     <artifact
-        location="C:\Users\dani\NoemiFlamenca\app\build\outputs\apk\debug\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1517396086037"
+        timestamp="1517397617047"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\Android StudioProjects2\NoemiFlamenca2\app\build\outputs\apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
@@ -71,35 +152,20 @@
             location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\dani\NoemiFlamenca\app\build\outputs\apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\dani\NoemiFlamenca\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

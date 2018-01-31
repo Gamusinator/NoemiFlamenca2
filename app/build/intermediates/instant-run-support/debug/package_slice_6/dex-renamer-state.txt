@@ -1,4 +1,4 @@
-#Wed Jan 31 11:55:09 CET 2018
-base.0=C\:\\Users\\dani\\NoemiFlamenca\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+#Wed Jan 31 12:20:24 CET 2018
+base.0=C\:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
 path.0=classes.dex
 renamed.0=classes.dex

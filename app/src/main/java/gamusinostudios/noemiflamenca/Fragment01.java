@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-/**
+/*
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link Fragment01.OnFragmentInteractionListener} interface
@@ -32,24 +34,6 @@ public class Fragment01 extends Fragment {
     int i = 0;
     int total;
 
-//    String[] fotoUrl={};
-//    URL imageUrl = null;
-//    HttpURLConnection conn = null;
-//
-//    try {
-//
-//        imageUrl = new URL("http://pagina.com/foto.jpg");
-//        conn = (HttpURLConnection) imageUrl.openConnection();
-//        conn.connect();
-//        Bitmap imagen = BitmapFactory.decodeStream(conn.getInputStream());
-//        img.setImageBitmap(imagen);
-//
-//    } catch (IOException e) {
-//
-//        e.printStackTrace();
-//
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,6 +48,8 @@ public class Fragment01 extends Fragment {
 
         total = fotoId.length;
 
+        cargarImagen(v);
+
         // Inflate the layout for this fragment
         return v;
     }
@@ -73,14 +59,20 @@ public class Fragment01 extends Fragment {
         public void onClick(View view) {
             int id = view.getId();
             if(id == R.id.botonSiguiente){
-                i++;
-                if(i == total) i = 0;
+//                i++;
+//                if(i == total) i = 0;
+                Picasso.with(view.getContext()).load("https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/24909789_655290551527508_1181231841592933036_n.jpg?oh=9756ed45e70e42b812feb813cb63e247&oe=5ADD81DB").into(galeria);
             }
             if(id == R.id.botonAnterior){
-                i--;
-                if(i == -1) i = total-1;
+//                i--;
+//                if(i == -1) i = total-1;
+                Picasso.with(view.getContext()).load("https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/26733397_676320916091138_122622102907252329_n.jpg?oh=5f05fe9fb89203847de2500e921d7470&oe=5B1A27D4").into(galeria);
             }
-            galeria.setImageResource(fotoId[i]);
+//            galeria.setImageResource(fotoId[i]);
         }
     };
+
+    public void cargarImagen(View v){
+        Picasso.with(v.getContext()).load("http://i.imgur.com/DvpvklR.png").into(galeria);
+    }
 }
