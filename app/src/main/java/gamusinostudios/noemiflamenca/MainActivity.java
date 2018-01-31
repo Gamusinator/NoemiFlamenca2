@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity
         //Crea TextView
         final TextView miTextView = new TextView(getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(this);
-        String URL = "https://mayoral-poisons.000webhostapp.com/consultarUsuario.php";
+        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/listaGaleria.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
                 @Override
