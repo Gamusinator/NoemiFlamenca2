@@ -91,13 +91,13 @@ public class MainActivity extends AppCompatActivity
         //Crea contenedor
         ConstraintLayout contenedor = (ConstraintLayout) findViewById(R.id.contenedor);
 
-        //FragmentManager fragmentManager=getSupportFragmentManager();
-
-        if (id == R.id.nav_vestidos) {
+        if (id == R.id.nav_inicio) {
             contenedor.removeAllViews();
-            //Actualmente este fragment no hace nada.
-            //fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment01()).commit();
-            listaVestidos();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment01()).commit();
+        } else if (id == R.id.nav_vestidos) {
+            contenedor.removeAllViews();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment_vestidos()).commit();
+            //listaVestidos();
         } else if (id == R.id.nav_faldas) {
             contenedor.removeAllViews();
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment02()).commit();
