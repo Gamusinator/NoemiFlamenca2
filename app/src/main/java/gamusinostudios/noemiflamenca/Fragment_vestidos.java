@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 
 /*
  * A simple {@link Fragment} subclass.
@@ -37,60 +39,55 @@ import android.widget.TextView;
  */
 public class Fragment_vestidos extends Fragment {
 
+    private View v;
+
     private Button btnSiguienteVestido, btnAnteriorVestido;
     private ImageView Vestidos_View;
     private TextView idVestido, colorVestido, descripcionVestido;
     private Vestido vestido;
     private List<Vestido> listaVestidos;
-    private int posicion = 0;
+    private int posicion = 0, total;
+    private String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/vestidos/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_vestidos, container, false);
+        v = inflater.inflate(R.layout.fragment_vestidos, container, false);
 
         listaVestidos=new ArrayList<Vestido>();
 
         btnAnteriorVestido = v.findViewById(R.id.botonAnteriorVestidos);
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
-        Vestidos_View = v.findViewById(R.id.imageViewPrincipal);
+        Vestidos_View = v.findViewById(R.id.imageViewVestidos);
         idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
         colorVestido = v.findViewById(R.id.textViewColorVestidosResultado);
         descripcionVestido = v.findViewById(R.id.textViewDescripcionVestidos);
 
+        btnSiguienteVestido.setOnClickListener(listener);
+        btnAnteriorVestido.setOnClickListener(listener);
 
-
-        btnSiguienteVestido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!listaVestidos.isEmpty()){
-                    posicion=listaVestidos.size()-1;
-                    mostrarVestido(posicion);
-                }else{
-                    posicion++;
-                    mostrarVestido(posicion);
-                }
-            }
-        });
-
-        btnAnteriorVestido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!listaVestidos.isEmpty()){
-                    if(posicion<=0){
-                        posicion=0;
-                        mostrarVestido(posicion);
-                    }
-                }else{
-                    posicion--;
-                    mostrarVestido(posicion);
-                }
-            }
-        });
         new Mostrar().execute();
         // Inflate the layout for this fragment
         return v;
     }
+
+    //Decidir què fer quan s'apreten els butons anterior i siguiente
+    Button.OnClickListener listener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            total = listaVestidos.size();
+            int id = view.getId();
+            if (id == R.id.botonSiguienteVestidos) {
+                posicion++;
+                if (posicion == total) posicion = 0;
+            }
+            if (id == R.id.botonAnteriorVestidos) {
+                posicion--;
+                if (posicion == -1) posicion = total - 1;
+            }
+            mostrarVestido(posicion);
+        }
+    };
 
     private String mostrar(){
         HttpClient httpclient = new DefaultHttpClient();
@@ -144,7 +141,7 @@ public class Fragment_vestidos extends Fragment {
                     JSONObject jsonArrayChild = jsonArray.getJSONObject(i);
                     vestido.setId(jsonArrayChild.optString("id_vestido"));
                     vestido.setColor(jsonArrayChild.optString("color_vestido"));
-                    vestido.setDescripcion(jsonArrayChild.optString("descripcion_vestdo"));
+                    vestido.setDescripcion(jsonArrayChild.optString("descripcion_vestido"));
                     vestido.setUrl(jsonArrayChild.optString("url_vestido"));
                     listaVestidos.add(vestido);
                 }
@@ -164,6 +161,8 @@ public class Fragment_vestidos extends Fragment {
                 idVestido.setText(vestidos.getId());
                 colorVestido.setText(vestidos.getColor());
                 descripcionVestido.setText(vestidos.getDescripcion());
+                String urlfoto = path + vestidos.getUrl();
+                Picasso.with(v.getContext()).load(urlfoto).into(Vestidos_View);
             }
         });
     }
