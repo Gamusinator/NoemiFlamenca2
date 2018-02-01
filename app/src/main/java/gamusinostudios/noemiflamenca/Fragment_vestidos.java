@@ -142,7 +142,7 @@ public class Fragment_vestidos extends Fragment {
                 for (int i = 0; i < jsonArray.length();i++){
                     vestido=new Vestido();
                     JSONObject jsonArrayChild = jsonArray.getJSONObject(i);
-                    vestido.setId(jsonArrayChild.optInt("id_vestido"));
+                    vestido.setId(jsonArrayChild.optString("id_vestido"));
                     vestido.setColor(jsonArrayChild.optString("color_vestido"));
                     vestido.setDescripcion(jsonArrayChild.optString("descripcion_vestdo"));
                     vestido.setUrl(jsonArrayChild.optString("url_vestido"));
@@ -157,7 +157,7 @@ public class Fragment_vestidos extends Fragment {
     }
 
     private void mostrarVestido(final int posicion){
-        Runnable runOnUiThread = new Runnable(){
+        getActivity().runOnUiThread (new Runnable(){
             @Override
             public void run() {
                 Vestido vestidos= listaVestidos.get(posicion);
@@ -165,7 +165,7 @@ public class Fragment_vestidos extends Fragment {
                 colorVestido.setText(vestidos.getColor());
                 descripcionVestido.setText(vestidos.getDescripcion());
             }
-        };
+        });
     }
 
     class Mostrar extends AsyncTask<String,String,String> {

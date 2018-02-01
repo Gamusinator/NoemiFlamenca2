@@ -5,10 +5,10 @@ package gamusinostudios.noemiflamenca;
  */
 
 public class Vestido {
-    private int Id;
-    private String Color, Descripcion, Url;
 
-    public int getId() {
+    private String Id, Color, Descripcion, Url;
+
+    public String getId() {
         return Id;
     }
 
@@ -24,7 +24,7 @@ public class Vestido {
         return Url;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         Id = id;
     }
 
