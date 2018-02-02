@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
+    android:paddingBottom="50dp"
     android:orientation="vertical"
     tools:context="gamusinostudios.noemiflamenca.Fragment01">
 
@@ -48,5 +47,5 @@
     <ImageView
         android:id="@+id/imageViewPrincipal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

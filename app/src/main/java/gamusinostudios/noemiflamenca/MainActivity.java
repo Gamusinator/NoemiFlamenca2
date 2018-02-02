@@ -25,6 +25,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Publicidad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            AdView mAdView = (AdView) findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        //Publicidad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         FloatingActionButton fab = findViewById(R.id.share);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -100,10 +108,10 @@ public class MainActivity extends AppCompatActivity
             //listaVestidos();
         } else if (id == R.id.nav_faldas) {
             contenedor.removeAllViews();
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment02()).commit();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment_faldas()).commit();
         } else if (id == R.id.nav_accesorios) {
             contenedor.removeAllViews();
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment03()).commit();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment_accesorios()).commit();
         } else if (id == R.id.nav_contacto) {
             contenedor.removeAllViews();
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment04()).commit();

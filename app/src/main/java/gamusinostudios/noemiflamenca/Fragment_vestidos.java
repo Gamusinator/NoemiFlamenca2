@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -56,7 +57,7 @@ public class Fragment_vestidos extends Fragment {
 
         listaVestidos=new ArrayList<Vestido>();
 
-        btnAnteriorVestido = v.findViewById(R.id.botonAnteriorVestidos);
+        btnAnteriorVestido = v.findViewById(R.id.botonAnteriorFaldas);
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
         Vestidos_View = v.findViewById(R.id.imageViewVestidos);
         idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
@@ -81,7 +82,7 @@ public class Fragment_vestidos extends Fragment {
                 posicion++;
                 if (posicion == total) posicion = 0;
             }
-            if (id == R.id.botonAnteriorVestidos) {
+            if (id == R.id.botonAnteriorFaldas) {
                 posicion--;
                 if (posicion == -1) posicion = total - 1;
             }
@@ -157,12 +158,16 @@ public class Fragment_vestidos extends Fragment {
         getActivity().runOnUiThread (new Runnable(){
             @Override
             public void run() {
-                Vestido vestidos= listaVestidos.get(posicion);
-                idVestido.setText(vestidos.getId());
-                colorVestido.setText(vestidos.getColor());
-                descripcionVestido.setText(vestidos.getDescripcion());
-                String urlfoto = path + vestidos.getUrl();
-                Picasso.with(v.getContext()).load(urlfoto).into(Vestidos_View);
+                if(!listaVestidos.isEmpty()) {
+                    Vestido vestidos= listaVestidos.get(posicion);
+                    idVestido.setText(vestidos.getId());
+                    colorVestido.setText(vestidos.getColor());
+                    descripcionVestido.setText(vestidos.getDescripcion());
+                    String urlfoto = path + vestidos.getUrl();
+                    Picasso.with(v.getContext()).load(urlfoto).into(Vestidos_View);
+                }else{
+                    Toast.makeText(getContext(), "Ups! Actualmente no hay vestidos disponibles", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
