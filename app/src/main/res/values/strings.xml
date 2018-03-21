@@ -12,8 +12,8 @@
     <string name="facebook">www.facebook.com/minoemiflamenca</string>
     <string name="youtube">www.youtube.com/channel/UCJtN1kSAs8c_NALtv968WoA</string>
     <string name="galeria">Fotos de Eventos</string>
-    <string name="galeria_anterior">Anterior</string>
-    <string name="galeria_siguiente">Siguiente</string>
+    <string name="galeria_anterior">&lt;</string>
+    <string name="galeria_siguiente">&gt;</string>
     <string name="action_settings">Settings</string>
     <string name="id_productos">ID: </string>
     <string name="color_productos">Color: </string>
