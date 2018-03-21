@@ -1,12 +1,19 @@
 package gamusinostudios.noemiflamenca;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,10 +35,14 @@ public class Fragment01 extends Fragment {
 
     Button btnSiguiente, btnAnterior;
     ImageView galeria;
+    RelativeLayout butons;
+    TextView titol;
+    ActionBar barra;
+    boolean isImageFitToScreen;
     String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/galeria/";
     String[] nombresArchivos;
     int i = 0;
-    int total;
+    int total, ample, alt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,11 +54,40 @@ public class Fragment01 extends Fragment {
         btnAnterior = v.findViewById(R.id.botonAnterior);
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
         galeria = v.findViewById(R.id.imageViewPrincipal);
+        butons = v.findViewById(R.id.butons);
+        titol = v.findViewById(R.id.textView2);
+        barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
 
         btnAnterior.setOnClickListener(listener);
         btnSiguiente.setOnClickListener(listener);
 
         Picasso.with(v.getContext()).load(path+"/1.jpg").into(galeria);
+
+        galeria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isImageFitToScreen) {
+                    isImageFitToScreen=false;
+                    butons.setVisibility(View.VISIBLE);
+                    titol.setVisibility(View.VISIBLE);
+                    barra.show();
+                    galeria.getLayoutParams().height = alt;
+                    galeria.getLayoutParams().width = ample;
+                    galeria.setAdjustViewBounds(false);
+                    galeria.setScaleType(ImageView.ScaleType.CENTER);
+
+                }else{
+                    isImageFitToScreen=true;
+                    alt = galeria.getHeight();
+                    ample = galeria.getWidth();
+                    butons.setVisibility(View.GONE);
+                    titol.setVisibility(View.GONE);
+                    barra.hide();
+                    galeria.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                    galeria.setScaleType(ImageView.ScaleType.CENTER);
+                }
+            }
+        });
         // Inflate the layout for this fragment
         return v;
     }

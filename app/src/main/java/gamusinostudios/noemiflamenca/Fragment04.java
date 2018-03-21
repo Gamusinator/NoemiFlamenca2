@@ -1,6 +1,5 @@
 package gamusinostudios.noemiflamenca;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -74,19 +73,6 @@ public class Fragment04 extends Fragment implements View.OnClickListener{
     }
 
     public void sendEmail(){
-        /*Intent emailIntent = new Intent(
-                android.content.Intent.ACTION_SEND);
-        emailIntent.setAction(Intent.ACTION_SEND);
-        //emailIntent.setType("message/rfc822");
-        emailIntent.setType("text/html");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-                new String[] { "minoemiflamenca@gmail.com" });
-        emailIntent.setType("text/html");
-
-        //Comprueba si hay alguna aplicación que pueda enviar nuestro Email
-        startActivity(Intent.createChooser(emailIntent,
-                "Enviar un Email con: "));
-                */
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
         intent.setPackage("com.google.android.gm");
