@@ -24,6 +24,7 @@ public class Fragment04 extends Fragment implements View.OnClickListener{
     ImageButton Gmail;
     ImageButton Facebook;
     ImageButton Youtube;
+    ImageButton Instagram;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +43,10 @@ public class Fragment04 extends Fragment implements View.OnClickListener{
         //definimos el boton Youtube
         Youtube = (ImageButton) myView.findViewById(R.id.imageButton3);
         Youtube.setOnClickListener(this);
+
+        //definimos el boton Youtube
+        Instagram = (ImageButton) myView.findViewById(R.id.imageButton4);
+        Instagram.setOnClickListener(this);
 
         return myView;
     }
@@ -65,6 +70,11 @@ public class Fragment04 extends Fragment implements View.OnClickListener{
             case R.id.imageButton3:
                 Toast.makeText(getContext(), "Abriendo youtube...", Toast.LENGTH_SHORT).show();
                 openYoutube();
+                break;
+            //boton youtube
+            case R.id.imageButton4:
+                Toast.makeText(getContext(), "Abriendo instagram...", Toast.LENGTH_SHORT).show();
+                openInstagram();
                 break;
 
             default:
@@ -92,6 +102,12 @@ public class Fragment04 extends Fragment implements View.OnClickListener{
 
     public void openYoutube(){
         Uri uriUrl = Uri.parse("http://www.youtube.com/channel/UCJtN1kSAs8c_NALtv968WoA");
+        Intent abrirFacebook = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(abrirFacebook);
+    }
+
+    public void openInstagram(){
+        Uri uriUrl = Uri.parse("https://www.instagram.com/minoemiflamenca/");
         Intent abrirFacebook = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(abrirFacebook);
     }

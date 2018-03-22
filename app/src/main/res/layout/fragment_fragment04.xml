@@ -24,7 +24,7 @@
         android:layout_alignLeft="@+id/imageButton2"
         android:layout_alignStart="@+id/imageButton2"
         android:contentDescription="@string/correo"
-        android:src="@mipmap/gmail" />
+        android:src="@drawable/gmail" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -34,7 +34,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/facebook"
-        android:src="@mipmap/facebook" />
+        android:src="@drawable/facebook" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -45,6 +45,17 @@
         android:layout_alignStart="@+id/imageButton2"
         android:layout_below="@+id/imageButton2"
         android:contentDescription="@string/youtube"
-        android:src="@mipmap/youtube" />
+        android:src="@drawable/youtube" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageButton3"
+        android:layout_alignStart="@+id/imageButton3"
+        android:layout_below="@+id/imageButton3"
+        android:contentDescription="@string/instagram"
+        android:src="@drawable/instagram" />
 
 </RelativeLayout>

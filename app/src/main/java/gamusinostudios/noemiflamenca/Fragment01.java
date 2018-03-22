@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,7 +47,7 @@ public class Fragment01 extends Fragment {
     String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/galeria/";
     String[] nombresArchivos;
     int i = 0;
-    int total, ample, alt;
+    int total;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +59,6 @@ public class Fragment01 extends Fragment {
         btnAnterior = v.findViewById(R.id.botonAnterior);
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
         galeria = v.findViewById(R.id.imageViewPrincipal);
-        //butons = v.findViewById(R.id.butons);
         titol = v.findViewById(R.id.textView2);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
@@ -81,19 +81,17 @@ public class Fragment01 extends Fragment {
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
-                    galeria.setScaleType(ImageView.ScaleType.CENTER);
-                    eventos.setPadding(16,0,16,100);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    eventos.setPadding(16,0,16,50);
 
                 }else{
                     isImageFitToScreen=true;
-                    alt = galeria.getHeight();
-                    ample = galeria.getWidth();
                     //butons.setVisibility(View.GONE);
                     titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
-                    galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     eventos.setPadding(0,16,0,16);
                 }
             }
@@ -105,19 +103,23 @@ public class Fragment01 extends Fragment {
     Button.OnClickListener listener = new Button.OnClickListener() {
         @Override
         public void onClick(View view) {
-            total = nombresArchivos.length;
-            int id = view.getId();
-            if(id == R.id.botonSiguiente){
-                i++;
-                if(i == total) i = 0;
+            if(nombresArchivos != null) {
+                total = nombresArchivos.length;
+                int id = view.getId();
+                if (id == R.id.botonSiguiente) {
+                    i++;
+                    if (i == total) i = 0;
+                }
+                if (id == R.id.botonAnterior) {
+                    i--;
+                    if (i == -1) i = total - 1;
+                }
+                //carreguem la imatge a l'ImageView
+                String urlfoto = path + nombresArchivos[i];
+                Picasso.with(view.getContext()).load(urlfoto).into(galeria);
+            }else{
+                Toast.makeText(getContext(), "Ups! Actualmente no hay fotos disponibles. Comprueba tu conexión a Internet", Toast.LENGTH_SHORT).show();
             }
-            if(id == R.id.botonAnterior){
-                i--;
-                if(i == -1) i = total-1;
-            }
-            //carreguem la imatge a l'ImageView
-            String urlfoto = path + nombresArchivos[i];
-            Picasso.with(view.getContext()).load(urlfoto).into(galeria);
         }
     };
 

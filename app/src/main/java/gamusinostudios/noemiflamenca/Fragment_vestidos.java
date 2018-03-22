@@ -15,16 +15,23 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 
@@ -39,6 +46,12 @@ import com.squareup.picasso.Picasso;
 public class Fragment_vestidos extends Fragment {
 
     private View v;
+    boolean isImageFitToScreen;
+    LinearLayout vestidos, infoV1, infoV2;
+    TextView titol;
+    ActionBar barra;
+    AdView publi;
+    FloatingActionButton fab;
 
     private Button btnSiguienteVestido, btnAnteriorVestido;
     private ImageView Vestidos_View;
@@ -55,17 +68,55 @@ public class Fragment_vestidos extends Fragment {
 
         listaVestidos=new ArrayList<Vestido>();
 
-        btnAnteriorVestido = v.findViewById(R.id.botonAnteriorFaldas);
+        btnAnteriorVestido = v.findViewById(R.id.botonAnteriorVestidos);
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
         Vestidos_View = v.findViewById(R.id.imageViewVestidos);
         idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
         colorVestido = v.findViewById(R.id.textViewColorVestidosResultado);
         descripcionVestido = v.findViewById(R.id.textViewDescripcionVestidos);
 
+        titol = v.findViewById(R.id.textViewVestidos);
+        barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        publi = getActivity().findViewById(R.id.adView);
+        fab = getActivity().findViewById(R.id.share);
+        vestidos = v.findViewById(R.id.vestidos);
+        infoV1 = v.findViewById(R.id.infoV1);
+        infoV2 = v.findViewById(R.id.infoV2);
+
         btnSiguienteVestido.setOnClickListener(listener);
         btnAnteriorVestido.setOnClickListener(listener);
 
         new Mostrar().execute();
+
+        Vestidos_View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isImageFitToScreen) {
+                    isImageFitToScreen=false;
+                    //butons.setVisibility(View.VISIBLE);
+                    titol.setVisibility(View.VISIBLE);
+                    barra.show();
+                    fab.setVisibility(View.VISIBLE);
+                    publi.setVisibility(View.VISIBLE);
+                    infoV1.setVisibility(View.VISIBLE);
+                    infoV2.setVisibility(View.VISIBLE);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    vestidos.setPadding(16,0,16,50);
+
+                }else{
+                    isImageFitToScreen=true;
+                    //butons.setVisibility(View.GONE);
+                    titol.setVisibility(View.GONE);
+                    barra.hide();
+                    fab.setVisibility(View.GONE);
+                    publi.setVisibility(View.GONE);
+                    infoV1.setVisibility(View.GONE);
+                    infoV2.setVisibility(View.GONE);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    vestidos.setPadding(0,16,0,16);
+                }
+            }
+        });
         // Inflate the layout for this fragment
         return v;
     }
@@ -80,7 +131,7 @@ public class Fragment_vestidos extends Fragment {
                 posicion++;
                 if (posicion == total) posicion = 0;
             }
-            if (id == R.id.botonAnteriorFaldas) {
+            if (id == R.id.botonAnteriorVestidos) {
                 posicion--;
                 if (posicion == -1) posicion = total - 1;
             }

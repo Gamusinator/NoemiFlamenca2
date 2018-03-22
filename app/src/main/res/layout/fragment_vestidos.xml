@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vestidos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
@@ -17,32 +18,8 @@
         android:text="@string/menu_1"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left">
-
-        <Button
-            android:id="@+id/botonAnteriorFaldas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="@string/galeria_anterior" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/botonAnteriorFaldas"
-            android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/botonSiguienteVestidos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="@string/galeria_siguiente" />
-        </LinearLayout>
-    </RelativeLayout>
     <LinearLayout
+        android:id="@+id/infoV1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp">
@@ -77,6 +54,7 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/infoV2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
@@ -88,8 +66,33 @@
             android:textColor="@android:color/black"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageViewVestidos"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+
+    <LinearLayout
+        android:id="@+id/butonsVestits"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/botonAnteriorVestidos"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:text="@string/galeria_anterior"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/imageViewVestidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/botonSiguienteVestidos"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/galeria_siguiente"
+            android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>

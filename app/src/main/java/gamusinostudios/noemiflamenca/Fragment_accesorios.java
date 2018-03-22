@@ -2,14 +2,20 @@ package gamusinostudios.noemiflamenca;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -40,6 +46,13 @@ public class Fragment_accesorios extends Fragment {
 
     private View v;
 
+    boolean isImageFitToScreen;
+    LinearLayout accesorios, infoA1, infoA2;
+    TextView titol;
+    ActionBar barra;
+    AdView publi;
+    FloatingActionButton fab;
+
     private Button btnSiguienteAccesorio, btnAnteriorAccesorio;
     private ImageView Accesorios_View;
     private TextView idAccesorio, colorAccesorio, descripcionAccesorio;
@@ -62,10 +75,48 @@ public class Fragment_accesorios extends Fragment {
         colorAccesorio = v.findViewById(R.id.textViewColorAccesoriosResultado);
         descripcionAccesorio = v.findViewById(R.id.textViewDescripcionAccesorios);
 
+        titol = v.findViewById(R.id.textViewAccesorios);
+        barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        publi = getActivity().findViewById(R.id.adView);
+        fab = getActivity().findViewById(R.id.share);
+        accesorios = v.findViewById(R.id.accesorios);
+        infoA1 = v.findViewById(R.id.infoA1);
+        infoA2 = v.findViewById(R.id.infoA2);
+
         btnSiguienteAccesorio.setOnClickListener(listener);
         btnAnteriorAccesorio.setOnClickListener(listener);
 
         new Mostrar().execute();
+
+        Accesorios_View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isImageFitToScreen) {
+                    isImageFitToScreen=false;
+                    //butons.setVisibility(View.VISIBLE);
+                    titol.setVisibility(View.VISIBLE);
+                    barra.show();
+                    fab.setVisibility(View.VISIBLE);
+                    publi.setVisibility(View.VISIBLE);
+                    infoA1.setVisibility(View.VISIBLE);
+                    infoA2.setVisibility(View.VISIBLE);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    accesorios.setPadding(16,0,16,50);
+
+                }else{
+                    isImageFitToScreen=true;
+                    //butons.setVisibility(View.GONE);
+                    titol.setVisibility(View.GONE);
+                    barra.hide();
+                    fab.setVisibility(View.GONE);
+                    publi.setVisibility(View.GONE);
+                    infoA1.setVisibility(View.GONE);
+                    infoA2.setVisibility(View.GONE);
+                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
+                    accesorios.setPadding(0,16,0,16);
+                }
+            }
+        });
         // Inflate the layout for this fragment
         return v;
     }
