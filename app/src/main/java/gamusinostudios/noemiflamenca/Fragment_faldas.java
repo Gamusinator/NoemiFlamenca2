@@ -54,7 +54,7 @@ public class Fragment_faldas extends Fragment {
 
     private Button btnSiguienteFalda, btnAnteriorFalda;
     private ImageView Faldas_View;
-    private TextView idFalda, colorFalda, descripcionFalda;
+    private TextView idFalda, colorFalda, descripcionFalda, precioFalda;
     private Falda falda;
     private List<Falda> listaFaldas;
     private int posicionF = 0, total;
@@ -70,9 +70,10 @@ public class Fragment_faldas extends Fragment {
         btnAnteriorFalda = v.findViewById(R.id.botonAnteriorFaldas);
         btnSiguienteFalda = v.findViewById(R.id.botonSiguienteFalda);
         Faldas_View = v.findViewById(R.id.imageViewFaldas);
-        idFalda = v.findViewById(R.id.textViewIdFaldaResultado);
+        //idFalda = v.findViewById(R.id.textViewIdFaldaResultado);
         colorFalda = v.findViewById(R.id.textViewColorFaldasResultado);
         descripcionFalda = v.findViewById(R.id.textViewDescripcionFaldas);
+        precioFalda = v.findViewById(R.id.textViewPrecioFaldasResultado);
 
         titol = v.findViewById(R.id.textViewFaldas);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
@@ -192,6 +193,7 @@ public class Fragment_faldas extends Fragment {
                     falda.setColor(jsonArrayChild.optString("color_falda"));
                     falda.setDescripcion(jsonArrayChild.optString("descripcion_falda"));
                     falda.setUrl(jsonArrayChild.optString("url_falda"));
+                    falda.setPrecio(jsonArrayChild.optString("precio_falda"));
                     listaFaldas.add(falda);
                 }
             } catch (JSONException e){
@@ -208,11 +210,16 @@ public class Fragment_faldas extends Fragment {
             public void run() {
                 if(!listaFaldas.isEmpty()) {
                     Falda faldas= listaFaldas.get(posicion);
-                    idFalda.setText(faldas.getId());
+                    //idFalda.setText(faldas.getId());
                     colorFalda.setText(faldas.getColor());
                     descripcionFalda.setText(faldas.getDescripcion());
                     String urlfoto = path + faldas.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Faldas_View);
+                    if (faldas.getPrecio().isEmpty()){
+                        precioFalda.setText("---");
+                    }else {
+                        precioFalda.setText(faldas.getPrecio() + "€");
+                    }
                 }else{
                     Toast.makeText(getContext(), "Ups! Actualmente no hay faldas disponibles", Toast.LENGTH_SHORT).show();
                 }

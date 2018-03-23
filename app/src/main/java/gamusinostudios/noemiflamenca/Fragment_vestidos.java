@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,7 +56,7 @@ public class Fragment_vestidos extends Fragment {
 
     private Button btnSiguienteVestido, btnAnteriorVestido;
     private ImageView Vestidos_View;
-    private TextView idVestido, colorVestido, descripcionVestido;
+    private TextView idVestido, colorVestido, descripcionVestido, precioVestido;
     private Vestido vestido;
     private List<Vestido> listaVestidos;
     private int posicion = 0, total;
@@ -71,9 +72,10 @@ public class Fragment_vestidos extends Fragment {
         btnAnteriorVestido = v.findViewById(R.id.botonAnteriorVestidos);
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
         Vestidos_View = v.findViewById(R.id.imageViewVestidos);
-        idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
+        //idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
         colorVestido = v.findViewById(R.id.textViewColorVestidosResultado);
         descripcionVestido = v.findViewById(R.id.textViewDescripcionVestidos);
+        precioVestido = v.findViewById(R.id.textViewPrecioVestidosResultado);
 
         titol = v.findViewById(R.id.textViewVestidos);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
@@ -189,10 +191,11 @@ public class Fragment_vestidos extends Fragment {
                 for (int i = 0; i < jsonArray.length();i++){
                     vestido=new Vestido();
                     JSONObject jsonArrayChild = jsonArray.getJSONObject(i);
-                    vestido.setId(jsonArrayChild.optString("id_vestido"));
+                    //vestido.setId(jsonArrayChild.optString("id_vestido"));
                     vestido.setColor(jsonArrayChild.optString("color_vestido"));
                     vestido.setDescripcion(jsonArrayChild.optString("descripcion_vestido"));
                     vestido.setUrl(jsonArrayChild.optString("url_vestido"));
+                    vestido.setPrecio(jsonArrayChild.optString("precio_vestido"));
                     listaVestidos.add(vestido);
                 }
             } catch (JSONException e){
@@ -209,11 +212,16 @@ public class Fragment_vestidos extends Fragment {
             public void run() {
                 if(!listaVestidos.isEmpty()) {
                     Vestido vestidos= listaVestidos.get(posicion);
-                    idVestido.setText(vestidos.getId());
+                    //idVestido.setText(vestidos.getId());
                     colorVestido.setText(vestidos.getColor());
                     descripcionVestido.setText(vestidos.getDescripcion());
                     String urlfoto = path + vestidos.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Vestidos_View);
+                    if (vestidos.getPrecio().isEmpty()){
+                        precioVestido.setText("---");
+                    }else {
+                        precioVestido.setText(vestidos.getPrecio() + "€");
+                    }
                 }else{
                     Toast.makeText(getContext(), "Ups! Actualmente no hay vestidos disponibles", Toast.LENGTH_SHORT).show();
                 }

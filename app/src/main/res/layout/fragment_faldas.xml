@@ -22,36 +22,47 @@
         android:id="@+id/infoF1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewIdFalda"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/id_productos"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textViewIdFaldaResultado"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@android:color/black" />
-
+            android:orientation="horizontal">
         <TextView
             android:id="@+id/textViewColorFaldas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/color_productos"
+            android:text="@string/productos_color"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/textViewColorFaldasResultado"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewPrecioFaldas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/precio_productos"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textViewPrecioFaldasResultado"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/common_signin_btn_default_background"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/infoF2"

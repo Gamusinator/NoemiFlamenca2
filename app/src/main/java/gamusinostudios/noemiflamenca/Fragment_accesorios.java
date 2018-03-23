@@ -55,7 +55,7 @@ public class Fragment_accesorios extends Fragment {
 
     private Button btnSiguienteAccesorio, btnAnteriorAccesorio;
     private ImageView Accesorios_View;
-    private TextView idAccesorio, colorAccesorio, descripcionAccesorio;
+    private TextView idAccesorio, colorAccesorio, descripcionAccesorio, precioAccesorio;
     private Accesorio accesorio;
     private List<Accesorio> listaAccesorios;
     private int posicionA = 0, total;
@@ -71,9 +71,10 @@ public class Fragment_accesorios extends Fragment {
         btnAnteriorAccesorio = v.findViewById(R.id.botonAnteriorAccesorios);
         btnSiguienteAccesorio = v.findViewById(R.id.botonSiguienteAccesorio);
         Accesorios_View = v.findViewById(R.id.imageViewAccesorios);
-        idAccesorio = v.findViewById(R.id.textViewIdAccesoriosResultado);
+        //idAccesorio = v.findViewById(R.id.textViewIdAccesoriosResultado);
         colorAccesorio = v.findViewById(R.id.textViewColorAccesoriosResultado);
         descripcionAccesorio = v.findViewById(R.id.textViewDescripcionAccesorios);
+        precioAccesorio = v.findViewById(R.id.textViewPrecioAccesoriosResultado);
 
         titol = v.findViewById(R.id.textViewAccesorios);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
@@ -193,6 +194,7 @@ public class Fragment_accesorios extends Fragment {
                     accesorio.setColor(jsonArrayChild.optString("color_accesorio"));
                     accesorio.setDescripcion(jsonArrayChild.optString("descripcion_accesorio"));
                     accesorio.setUrl(jsonArrayChild.optString("url_accesorio"));
+                    accesorio.setPrecio(jsonArrayChild.optString("precio_accesorio"));
                     listaAccesorios.add(accesorio);
                 }
             } catch (JSONException e){
@@ -209,11 +211,16 @@ public class Fragment_accesorios extends Fragment {
             public void run() {
                 if(!listaAccesorios.isEmpty()) {
                     Accesorio accesorios= listaAccesorios.get(posicion);
-                    idAccesorio.setText(accesorios.getId());
+                    //idAccesorio.setText(accesorios.getId());
                     colorAccesorio.setText(accesorios.getColor());
                     descripcionAccesorio.setText(accesorios.getDescripcion());
                     String urlfoto = path + accesorios.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Accesorios_View);
+                    if (accesorio.getPrecio().isEmpty()){
+                        precioAccesorio.setText("---");
+                    }else {
+                        precioAccesorio.setText(accesorios.getPrecio() + "€");
+                    }
                 }else{
                     Toast.makeText(getContext(), "Ups! Actualmente no hay accesorios disponibles", Toast.LENGTH_SHORT).show();
                 }

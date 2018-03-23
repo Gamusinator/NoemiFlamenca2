@@ -6,7 +6,7 @@ package gamusinostudios.noemiflamenca;
 
 public class Falda {
 
-    private String Id, Color, Descripcion, Url;
+    private String Id, Color, Descripcion, Url, Precio;
 
     public String getId() {
         return Id;
@@ -40,6 +40,14 @@ public class Falda {
         Url = url;
     }
 
+    public String getPrecio() {
+        return Precio;
+    }
+
+    public void setPrecio(String precio) {
+        Precio = precio;
+    }
+
     @Override
     public String toString() {
         return "Falda{" +
@@ -47,6 +55,7 @@ public class Falda {
                 ", Color='" + Color + '\'' +
                 ", Descripcion='" + Descripcion + '\'' +
                 ", Url='" + Url + '\'' +
+                ", Precio='" + Precio + '\'' +
                 '}';
     }
 }

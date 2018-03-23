@@ -6,7 +6,7 @@ package gamusinostudios.noemiflamenca;
 
 public class Vestido {
 
-    private String Id, Color, Descripcion, Url;
+    private String Id, Color, Descripcion, Url, Precio;
 
     public String getId() {
         return Id;
@@ -22,6 +22,10 @@ public class Vestido {
 
     public String getUrl() {
         return Url;
+    }
+
+    public String getPrecio() {
+        return Precio;
     }
 
     public void setId(String id) {
@@ -40,13 +44,18 @@ public class Vestido {
         Url = url;
     }
 
+    public void setPrecio(String precio) {
+        Precio = precio;
+    }
+
     @Override
     public String toString() {
         return "Vestido{" +
-                "Id=" + Id +
+                "Id='" + Id + '\'' +
                 ", Color='" + Color + '\'' +
                 ", Descripcion='" + Descripcion + '\'' +
                 ", Url='" + Url + '\'' +
+                ", Precio='" + Precio + '\'' +
                 '}';
     }
 }
