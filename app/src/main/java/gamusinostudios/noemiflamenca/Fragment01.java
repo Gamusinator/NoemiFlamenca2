@@ -1,29 +1,33 @@
 package gamusinostudios.noemiflamenca;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 /*
@@ -54,7 +58,7 @@ public class Fragment01 extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_fragment01, container, false);
 
-        cargarArray(v);
+        new Mostrar().execute();
 
         btnAnterior = v.findViewById(R.id.botonAnterior);
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
@@ -123,23 +127,58 @@ public class Fragment01 extends Fragment {
         }
     };
 
-    public void cargarArray(View v){
-        RequestQueue queue = Volley.newRequestQueue(v.getContext());
-        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/galeria.php";
+    public void cargarArray(){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
 
-            @Override
-            public void onResponse(String response) {
-                String string = response;
-                nombresArchivos = string.split(","); //Aquí tenemos la array cargada con los nombres de fichero
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://35.177.198.220/noemiFlamenca/scripts/galeria.php");
+        //autentificacio
+        httppost.setHeader("Authorization", "Basic "+ Base64.encodeToString("scudgamu:2on2esdepros".getBytes(),Base64.URL_SAFE|Base64.NO_WRAP));
+
+        String resultado="";
+        HttpResponse response;
+        try{
+            response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            InputStream instream = entity.getContent();
+            resultado=convertStreamToString(instream);
+
+        } catch (ClientProtocolException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        if (!resultado.isEmpty()){
+            String string = resultado;
+            nombresArchivos = string.split(","); //Aquí tenemos la array cargada con los nombres de fichero
+        }
+    }
+
+    private String convertStreamToString(InputStream is) throws IOException{
+        if (is !=null){
+            StringBuilder sb = new StringBuilder();
+            String line;
+            try{
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, "UTF-8"));
+                while ((line = reader.readLine()) != null){
+                    sb.append(line).append("\n");
+                }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Respuesta incorrecta
+            finally{
+                is.close();
             }
-        });
-        queue.add(stringRequest);
+            return sb.toString();
+        }else{
+            return "";
+        }
+    }
+
+    class Mostrar extends AsyncTask<String,String,String> {
+        protected String doInBackground(String... params){
+            cargarArray();
+            return null;
+        }
     }
 }
