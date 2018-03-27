@@ -34,6 +34,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 /*
  * A simple {@link Fragment} subclass.
@@ -45,6 +47,7 @@ import java.util.List;
  */
 public class Fragment_faldas extends Fragment {
 
+    PhotoViewAttacher mAttacher;
     private View v;
     boolean isImageFitToScreen;
     LinearLayout faldas, infoF1, infoF2;
@@ -53,7 +56,7 @@ public class Fragment_faldas extends Fragment {
     AdView publi;
     FloatingActionButton fab;
 
-    private Button btnSiguienteFalda, btnAnteriorFalda;
+    private Button btnSiguienteFalda, btnAnteriorFalda, modoFoto;
     private ImageView Faldas_View;
     private TextView idFalda, colorFalda, descripcionFalda, precioFalda;
     private Falda falda;
@@ -70,13 +73,13 @@ public class Fragment_faldas extends Fragment {
 
         btnAnteriorFalda = v.findViewById(R.id.botonAnteriorFaldas);
         btnSiguienteFalda = v.findViewById(R.id.botonSiguienteFalda);
+        modoFoto = v.findViewById(R.id.modoFotoFaldas);
         Faldas_View = v.findViewById(R.id.imageViewFaldas);
         //idFalda = v.findViewById(R.id.textViewIdFaldaResultado);
         colorFalda = v.findViewById(R.id.textViewColorFaldasResultado);
         descripcionFalda = v.findViewById(R.id.textViewDescripcionFaldas);
         precioFalda = v.findViewById(R.id.textViewPrecioFaldasResultado);
 
-        titol = v.findViewById(R.id.textViewFaldas);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
         fab = getActivity().findViewById(R.id.share);
@@ -89,13 +92,13 @@ public class Fragment_faldas extends Fragment {
 
         new Mostrar().execute();
 
-        Faldas_View.setOnClickListener(new View.OnClickListener() {
+        modoFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
                     //butons.setVisibility(View.VISIBLE);
-                    titol.setVisibility(View.VISIBLE);
+                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
@@ -107,7 +110,7 @@ public class Fragment_faldas extends Fragment {
                 }else{
                     isImageFitToScreen=true;
                     //butons.setVisibility(View.GONE);
-                    titol.setVisibility(View.GONE);
+                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
@@ -118,6 +121,7 @@ public class Fragment_faldas extends Fragment {
                 }
             }
         });
+        mAttacher = new PhotoViewAttacher(Faldas_View);
         // Inflate the layout for this fragment
         return v;
     }
@@ -217,6 +221,7 @@ public class Fragment_faldas extends Fragment {
                     descripcionFalda.setText(faldas.getDescripcion());
                     String urlfoto = path + faldas.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Faldas_View);
+                    mAttacher.update();
                     if (faldas.getPrecio().isEmpty()){
                         precioFalda.setText("---");
                     }else {

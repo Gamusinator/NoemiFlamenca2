@@ -34,6 +34,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 /*
  * A simple {@link Fragment} subclass.
@@ -45,8 +47,8 @@ import java.util.List;
  */
 public class Fragment_accesorios extends Fragment {
 
+    PhotoViewAttacher mAttacher;
     private View v;
-
     boolean isImageFitToScreen;
     LinearLayout accesorios, infoA1, infoA2;
     TextView titol;
@@ -54,7 +56,7 @@ public class Fragment_accesorios extends Fragment {
     AdView publi;
     FloatingActionButton fab;
 
-    private Button btnSiguienteAccesorio, btnAnteriorAccesorio;
+    private Button btnSiguienteAccesorio, btnAnteriorAccesorio, modoFoto;
     private ImageView Accesorios_View;
     private TextView idAccesorio, colorAccesorio, descripcionAccesorio, precioAccesorio;
     private Accesorio accesorio;
@@ -71,13 +73,13 @@ public class Fragment_accesorios extends Fragment {
 
         btnAnteriorAccesorio = v.findViewById(R.id.botonAnteriorAccesorios);
         btnSiguienteAccesorio = v.findViewById(R.id.botonSiguienteAccesorio);
+        modoFoto = v.findViewById(R.id.modoFotoAccesorios);
         Accesorios_View = v.findViewById(R.id.imageViewAccesorios);
         //idAccesorio = v.findViewById(R.id.textViewIdAccesoriosResultado);
         colorAccesorio = v.findViewById(R.id.textViewColorAccesoriosResultado);
         descripcionAccesorio = v.findViewById(R.id.textViewDescripcionAccesorios);
         precioAccesorio = v.findViewById(R.id.textViewPrecioAccesoriosResultado);
 
-        titol = v.findViewById(R.id.textViewAccesorios);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
         fab = getActivity().findViewById(R.id.share);
@@ -90,13 +92,13 @@ public class Fragment_accesorios extends Fragment {
 
         new Mostrar().execute();
 
-        Accesorios_View.setOnClickListener(new View.OnClickListener() {
+        modoFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
                     //butons.setVisibility(View.VISIBLE);
-                    titol.setVisibility(View.VISIBLE);
+                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
@@ -108,7 +110,7 @@ public class Fragment_accesorios extends Fragment {
                 }else{
                     isImageFitToScreen=true;
                     //butons.setVisibility(View.GONE);
-                    titol.setVisibility(View.GONE);
+                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
@@ -119,6 +121,7 @@ public class Fragment_accesorios extends Fragment {
                 }
             }
         });
+        mAttacher = new PhotoViewAttacher(Accesorios_View);
         // Inflate the layout for this fragment
         return v;
     }
@@ -218,6 +221,7 @@ public class Fragment_accesorios extends Fragment {
                     descripcionAccesorio.setText(accesorios.getDescripcion());
                     String urlfoto = path + accesorios.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Accesorios_View);
+                    mAttacher.update();
                     if (accesorio.getPrecio().isEmpty()){
                         precioAccesorio.setText("---");
                     }else {

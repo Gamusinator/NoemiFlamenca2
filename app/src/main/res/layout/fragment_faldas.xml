@@ -10,13 +10,11 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/textViewFaldas"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/modoFotoFaldas"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/menu_2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:text="@string/modo_foto" />
 
     <LinearLayout
         android:id="@+id/infoF1"
@@ -89,13 +87,12 @@
             android:id="@+id/botonAnteriorFaldas"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
             android:text="@string/galeria_anterior"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/imageViewFaldas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"/>
 

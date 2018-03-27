@@ -34,6 +34,8 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 /*
  * A simple {@link Fragment} subclass.
@@ -45,6 +47,7 @@ import com.squareup.picasso.Picasso;
  */
 public class Fragment_vestidos extends Fragment {
 
+    PhotoViewAttacher mAttacher;
     private View v;
     boolean isImageFitToScreen;
     LinearLayout vestidos, infoV1, infoV2;
@@ -53,7 +56,7 @@ public class Fragment_vestidos extends Fragment {
     AdView publi;
     FloatingActionButton fab;
 
-    private Button btnSiguienteVestido, btnAnteriorVestido;
+    private Button btnSiguienteVestido, btnAnteriorVestido, modoFoto;
     private ImageView Vestidos_View;
     private TextView idVestido, colorVestido, descripcionVestido, precioVestido;
     private Vestido vestido;
@@ -70,13 +73,13 @@ public class Fragment_vestidos extends Fragment {
 
         btnAnteriorVestido = v.findViewById(R.id.botonAnteriorVestidos);
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
+        modoFoto = v.findViewById(R.id.modoFotoVestidos);
         Vestidos_View = v.findViewById(R.id.imageViewVestidos);
         //idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
         colorVestido = v.findViewById(R.id.textViewColorVestidosResultado);
         descripcionVestido = v.findViewById(R.id.textViewDescripcionVestidos);
         precioVestido = v.findViewById(R.id.textViewPrecioVestidosResultado);
 
-        titol = v.findViewById(R.id.textViewVestidos);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
         fab = getActivity().findViewById(R.id.share);
@@ -89,13 +92,13 @@ public class Fragment_vestidos extends Fragment {
 
         new Mostrar().execute();
 
-        Vestidos_View.setOnClickListener(new View.OnClickListener() {
+        modoFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
                     //butons.setVisibility(View.VISIBLE);
-                    titol.setVisibility(View.VISIBLE);
+                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
@@ -107,7 +110,7 @@ public class Fragment_vestidos extends Fragment {
                 }else{
                     isImageFitToScreen=true;
                     //butons.setVisibility(View.GONE);
-                    titol.setVisibility(View.GONE);
+                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
@@ -118,6 +121,7 @@ public class Fragment_vestidos extends Fragment {
                 }
             }
         });
+        mAttacher = new PhotoViewAttacher(Vestidos_View);
         // Inflate the layout for this fragment
         return v;
     }
@@ -219,6 +223,7 @@ public class Fragment_vestidos extends Fragment {
                     descripcionVestido.setText(vestidos.getDescripcion());
                     String urlfoto = path + vestidos.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Vestidos_View);
+                    mAttacher.update();
                     if (vestidos.getPrecio().isEmpty()){
                         precioVestido.setText("---");
                     }else {

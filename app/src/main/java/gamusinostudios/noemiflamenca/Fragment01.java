@@ -29,6 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 /*
  * A simple {@link Fragment} subclass.
@@ -40,15 +42,16 @@ import java.io.InputStreamReader;
  */
 public class Fragment01 extends Fragment {
 
-    Button btnSiguiente, btnAnterior;
+    PhotoViewAttacher mAttacher;
+    Button btnSiguiente, btnAnterior, modoFoto;
     ImageView galeria;
     LinearLayout eventos;
-    TextView titol;
+    //TextView titol;
     ActionBar barra;
     AdView publi;
     FloatingActionButton fab;
     boolean isImageFitToScreen;
-    String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/galeria/";
+    String path = "http://35.177.198.220/noemiFlamenca/imagenes/galeria/";
     String[] nombresArchivos;
     int i = 0;
     int total;
@@ -62,8 +65,9 @@ public class Fragment01 extends Fragment {
 
         btnAnterior = v.findViewById(R.id.botonAnterior);
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
+        modoFoto = v.findViewById(R.id.modoFotoGaleria);
         galeria = v.findViewById(R.id.imageViewPrincipal);
-        titol = v.findViewById(R.id.textView2);
+        //titol = v.findViewById(R.id.textView2);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
         fab = getActivity().findViewById(R.id.share);
@@ -74,14 +78,15 @@ public class Fragment01 extends Fragment {
         btnSiguiente.setOnClickListener(listener);
 
         Picasso.with(v.getContext()).load(path+"/1.jpg").into(galeria);
+        mAttacher = new PhotoViewAttacher(galeria);
 
-        galeria.setOnClickListener(new View.OnClickListener() {
+        modoFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
                     //butons.setVisibility(View.VISIBLE);
-                    titol.setVisibility(View.VISIBLE);
+                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
@@ -91,7 +96,7 @@ public class Fragment01 extends Fragment {
                 }else{
                     isImageFitToScreen=true;
                     //butons.setVisibility(View.GONE);
-                    titol.setVisibility(View.GONE);
+                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
@@ -121,6 +126,7 @@ public class Fragment01 extends Fragment {
                 //carreguem la imatge a l'ImageView
                 String urlfoto = path + nombresArchivos[i];
                 Picasso.with(view.getContext()).load(urlfoto).into(galeria);
+                mAttacher.update();
             }else{
                 Toast.makeText(getContext(), "Ups! Actualmente no hay fotos disponibles. Comprueba tu conexión a Internet", Toast.LENGTH_SHORT).show();
             }
