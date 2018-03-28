@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import org.apache.http.HttpEntity;
@@ -34,7 +35,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /*
@@ -51,13 +51,12 @@ public class Fragment_accesorios extends Fragment {
     private View v;
     boolean isImageFitToScreen;
     LinearLayout accesorios, infoA1, infoA2;
-    TextView titol;
     ActionBar barra;
     AdView publi;
     FloatingActionButton fab;
 
     private Button btnSiguienteAccesorio, btnAnteriorAccesorio, modoFoto;
-    private ImageView Accesorios_View;
+    private PhotoView Accesorios_View;
     private TextView idAccesorio, colorAccesorio, descripcionAccesorio, precioAccesorio;
     private Accesorio accesorio;
     private List<Accesorio> listaAccesorios;
@@ -75,7 +74,6 @@ public class Fragment_accesorios extends Fragment {
         btnSiguienteAccesorio = v.findViewById(R.id.botonSiguienteAccesorio);
         modoFoto = v.findViewById(R.id.modoFotoAccesorios);
         Accesorios_View = v.findViewById(R.id.imageViewAccesorios);
-        //idAccesorio = v.findViewById(R.id.textViewIdAccesoriosResultado);
         colorAccesorio = v.findViewById(R.id.textViewColorAccesoriosResultado);
         descripcionAccesorio = v.findViewById(R.id.textViewDescripcionAccesorios);
         precioAccesorio = v.findViewById(R.id.textViewPrecioAccesoriosResultado);
@@ -97,26 +95,20 @@ public class Fragment_accesorios extends Fragment {
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
-                    //butons.setVisibility(View.VISIBLE);
-                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
                     infoA1.setVisibility(View.VISIBLE);
                     infoA2.setVisibility(View.VISIBLE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     accesorios.setPadding(16,0,16,50);
 
                 }else{
                     isImageFitToScreen=true;
-                    //butons.setVisibility(View.GONE);
-                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
                     infoA1.setVisibility(View.GONE);
                     infoA2.setVisibility(View.GONE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     accesorios.setPadding(0,16,0,16);
                 }
             }
@@ -216,7 +208,6 @@ public class Fragment_accesorios extends Fragment {
             public void run() {
                 if(!listaAccesorios.isEmpty()) {
                     Accesorio accesorios= listaAccesorios.get(posicion);
-                    //idAccesorio.setText(accesorios.getId());
                     colorAccesorio.setText(accesorios.getColor());
                     descripcionAccesorio.setText(accesorios.getDescripcion());
                     String urlfoto = path + accesorios.getUrl();

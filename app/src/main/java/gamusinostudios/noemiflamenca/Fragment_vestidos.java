@@ -26,15 +26,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /*
@@ -51,13 +50,12 @@ public class Fragment_vestidos extends Fragment {
     private View v;
     boolean isImageFitToScreen;
     LinearLayout vestidos, infoV1, infoV2;
-    TextView titol;
     ActionBar barra;
     AdView publi;
     FloatingActionButton fab;
 
     private Button btnSiguienteVestido, btnAnteriorVestido, modoFoto;
-    private ImageView Vestidos_View;
+    private PhotoView Vestidos_View;
     private TextView idVestido, colorVestido, descripcionVestido, precioVestido;
     private Vestido vestido;
     private List<Vestido> listaVestidos;
@@ -75,7 +73,6 @@ public class Fragment_vestidos extends Fragment {
         btnSiguienteVestido = v.findViewById(R.id.botonSiguienteVestidos);
         modoFoto = v.findViewById(R.id.modoFotoVestidos);
         Vestidos_View = v.findViewById(R.id.imageViewVestidos);
-        //idVestido = v.findViewById(R.id.textViewIdVestidosResultado);
         colorVestido = v.findViewById(R.id.textViewColorVestidosResultado);
         descripcionVestido = v.findViewById(R.id.textViewDescripcionVestidos);
         precioVestido = v.findViewById(R.id.textViewPrecioVestidosResultado);
@@ -97,26 +94,20 @@ public class Fragment_vestidos extends Fragment {
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
-                    //butons.setVisibility(View.VISIBLE);
-                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
                     infoV1.setVisibility(View.VISIBLE);
                     infoV2.setVisibility(View.VISIBLE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     vestidos.setPadding(16,0,16,50);
 
                 }else{
                     isImageFitToScreen=true;
-                    //butons.setVisibility(View.GONE);
-                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
                     infoV1.setVisibility(View.GONE);
                     infoV2.setVisibility(View.GONE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     vestidos.setPadding(0,16,0,16);
                 }
             }
@@ -197,7 +188,6 @@ public class Fragment_vestidos extends Fragment {
                 for (int i = 0; i < jsonArray.length();i++){
                     vestido=new Vestido();
                     JSONObject jsonArrayChild = jsonArray.getJSONObject(i);
-                    //vestido.setId(jsonArrayChild.optString("id_vestido"));
                     vestido.setColor(jsonArrayChild.optString("color_vestido"));
                     vestido.setDescripcion(jsonArrayChild.optString("descripcion_vestido"));
                     vestido.setUrl(jsonArrayChild.optString("url_vestido"));
@@ -218,7 +208,6 @@ public class Fragment_vestidos extends Fragment {
             public void run() {
                 if(!listaVestidos.isEmpty()) {
                     Vestido vestidos= listaVestidos.get(posicion);
-                    //idVestido.setText(vestidos.getId());
                     colorVestido.setText(vestidos.getColor());
                     descripcionVestido.setText(vestidos.getDescripcion());
                     String urlfoto = path + vestidos.getUrl();

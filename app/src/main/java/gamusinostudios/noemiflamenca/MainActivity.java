@@ -1,7 +1,6 @@
 package gamusinostudios.noemiflamenca;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -15,13 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -117,43 +109,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void listaVestidos(){
-
-        //Crea contenedor
-        ConstraintLayout contenedor = (ConstraintLayout) findViewById(R.id.contenedor);
-        //Crea TextView
-        final TextView miTextView = new TextView(getApplicationContext());
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String URL = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/scripts/galeria.php";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                //Respuesta correcta
-                //miTextView.setText("Resultado: " + response);
-                String string = response;
-                String[] parts = string.split(",");
-                String part1 = parts[0]; // 123
-                String part2 = parts[1]; // 654321
-                miTextView.setText(part2);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Respuesta incorrecta
-                miTextView.setText("La base de datos tardó mucho en responder...");
-            }
-        });
-        queue.add(stringRequest);
-
-        //Agrega propiedades al TextView.
-        miTextView.setTextColor(Color.BLUE);
-
-        //Agrega vistas al contenedor.
-        contenedor.addView(miTextView);
     }
 
     public void CompartirAPP() {

@@ -580,8 +580,8 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f07007e;
         public static final int notification_tile_bg = 0x7f07007f;
         public static final int notify_panel_notification_icon_bg = 0x7f070080;
-        public static final int tooltip_frame_dark = 0x7f070083;
-        public static final int tooltip_frame_light = 0x7f070084;
+        public static final int tooltip_frame_dark = 0x7f070084;
+        public static final int tooltip_frame_light = 0x7f070085;
     }
     public static final class id {
         public static final int action0 = 0x7f080007;
@@ -737,8 +737,8 @@ public final class R {
         public static final int select_dialog_item_material = 0x7f0a0041;
         public static final int select_dialog_multichoice_material = 0x7f0a0042;
         public static final int select_dialog_singlechoice_material = 0x7f0a0043;
-        public static final int support_simple_spinner_dropdown_item = 0x7f0a0044;
-        public static final int tooltip = 0x7f0a0045;
+        public static final int support_simple_spinner_dropdown_item = 0x7f0a0045;
+        public static final int tooltip = 0x7f0a0046;
     }
     public static final class string {
         public static final int abc_action_bar_home_description = 0x7f0d0000;

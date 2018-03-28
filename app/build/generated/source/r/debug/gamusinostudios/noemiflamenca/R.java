@@ -3540,10 +3540,11 @@ public final class R {
     public static final int notification_tile_bg=0x7f07007f;
     public static final int notify_panel_notification_icon_bg=0x7f070080;
     public static final int side_nav_bar=0x7f070081;
-    public static final int titulo3=0x7f070082;
-    public static final int tooltip_frame_dark=0x7f070083;
-    public static final int tooltip_frame_light=0x7f070084;
-    public static final int youtube=0x7f070085;
+    public static final int splash=0x7f070082;
+    public static final int titulo3=0x7f070083;
+    public static final int tooltip_frame_dark=0x7f070084;
+    public static final int tooltip_frame_light=0x7f070085;
+    public static final int youtube=0x7f070086;
   }
   public static final class id {
     public static final int ALT=0x7f080000;
@@ -3874,8 +3875,9 @@ public final class R {
     public static final int select_dialog_item_material=0x7f0a0041;
     public static final int select_dialog_multichoice_material=0x7f0a0042;
     public static final int select_dialog_singlechoice_material=0x7f0a0043;
-    public static final int support_simple_spinner_dropdown_item=0x7f0a0044;
-    public static final int tooltip=0x7f0a0045;
+    public static final int splash_screen=0x7f0a0044;
+    public static final int support_simple_spinner_dropdown_item=0x7f0a0045;
+    public static final int tooltip=0x7f0a0046;
   }
   public static final class menu {
     public static final int activity_main_drawer=0x7f0b0000;

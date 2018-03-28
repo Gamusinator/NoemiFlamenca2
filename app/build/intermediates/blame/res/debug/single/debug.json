@@ -148,6 +148,10 @@
         "source": "C:\\Users\\dani\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d1ca04af4d84a61e7bc2f7beeec636c7\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     },
     {
+        "merged": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_splash.png.flat",
+        "source": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\src\\main\\res\\drawable-v21\\splash.png"
+    },
+    {
         "merged": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\dani\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\d1ca04af4d84a61e7bc2f7beeec636c7\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
@@ -1722,6 +1726,10 @@
     {
         "merged": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_share.xml.flat",
         "source": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\src\\main\\res\\drawable-v21\\ic_menu_share.xml"
+    },
+    {
+        "merged": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\res\\merged\\debug\\layout_splash_screen.xml.flat",
+        "source": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\src\\main\\res\\layout\\splash_screen.xml"
     },
     {
         "merged": "C:\\Users\\dani\\Android StudioProjects2\\NoemiFlamenca2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",

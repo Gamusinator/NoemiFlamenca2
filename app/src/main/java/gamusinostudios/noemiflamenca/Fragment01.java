@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import org.apache.http.HttpEntity;
@@ -28,8 +31,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /*
@@ -44,9 +45,8 @@ public class Fragment01 extends Fragment {
 
     PhotoViewAttacher mAttacher;
     Button btnSiguiente, btnAnterior, modoFoto;
-    ImageView galeria;
+    PhotoView galeria;
     LinearLayout eventos;
-    //TextView titol;
     ActionBar barra;
     AdView publi;
     FloatingActionButton fab;
@@ -67,7 +67,6 @@ public class Fragment01 extends Fragment {
         btnSiguiente = v.findViewById(R.id.botonSiguiente);
         modoFoto = v.findViewById(R.id.modoFotoGaleria);
         galeria = v.findViewById(R.id.imageViewPrincipal);
-        //titol = v.findViewById(R.id.textView2);
         barra = ((AppCompatActivity)getActivity()).getSupportActionBar();
         publi = getActivity().findViewById(R.id.adView);
         fab = getActivity().findViewById(R.id.share);
@@ -85,22 +84,16 @@ public class Fragment01 extends Fragment {
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
-                    //butons.setVisibility(View.VISIBLE);
-                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     eventos.setPadding(16,0,16,50);
 
                 }else{
                     isImageFitToScreen=true;
-                    //butons.setVisibility(View.GONE);
-                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     eventos.setPadding(0,16,0,16);
                 }
             }

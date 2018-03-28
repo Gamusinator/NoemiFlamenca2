@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 import org.apache.http.HttpEntity;
@@ -34,7 +35,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 
 /*
@@ -51,13 +51,12 @@ public class Fragment_faldas extends Fragment {
     private View v;
     boolean isImageFitToScreen;
     LinearLayout faldas, infoF1, infoF2;
-    TextView titol;
     ActionBar barra;
     AdView publi;
     FloatingActionButton fab;
 
     private Button btnSiguienteFalda, btnAnteriorFalda, modoFoto;
-    private ImageView Faldas_View;
+    private PhotoView Faldas_View;
     private TextView idFalda, colorFalda, descripcionFalda, precioFalda;
     private Falda falda;
     private List<Falda> listaFaldas;
@@ -75,7 +74,6 @@ public class Fragment_faldas extends Fragment {
         btnSiguienteFalda = v.findViewById(R.id.botonSiguienteFalda);
         modoFoto = v.findViewById(R.id.modoFotoFaldas);
         Faldas_View = v.findViewById(R.id.imageViewFaldas);
-        //idFalda = v.findViewById(R.id.textViewIdFaldaResultado);
         colorFalda = v.findViewById(R.id.textViewColorFaldasResultado);
         descripcionFalda = v.findViewById(R.id.textViewDescripcionFaldas);
         precioFalda = v.findViewById(R.id.textViewPrecioFaldasResultado);
@@ -97,26 +95,20 @@ public class Fragment_faldas extends Fragment {
             public void onClick(View v) {
                 if(isImageFitToScreen) {
                     isImageFitToScreen=false;
-                    //butons.setVisibility(View.VISIBLE);
-                    //titol.setVisibility(View.VISIBLE);
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
                     publi.setVisibility(View.VISIBLE);
                     infoF1.setVisibility(View.VISIBLE);
                     infoF2.setVisibility(View.VISIBLE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     faldas.setPadding(16,0,16,50);
 
                 }else{
                     isImageFitToScreen=true;
-                    //butons.setVisibility(View.GONE);
-                    //titol.setVisibility(View.GONE);
                     barra.hide();
                     fab.setVisibility(View.GONE);
                     publi.setVisibility(View.GONE);
                     infoF1.setVisibility(View.GONE);
                     infoF2.setVisibility(View.GONE);
-                    //galeria.setScaleType(ImageView.ScaleType.CENTER);
                     faldas.setPadding(0,16,0,16);
                 }
             }
@@ -141,6 +133,7 @@ public class Fragment_faldas extends Fragment {
                  if (posicionF == -1) posicionF = total - 1;
              }
              mostrarFalda(posicionF);
+             mAttacher.update();
         }
     };
 
@@ -216,12 +209,10 @@ public class Fragment_faldas extends Fragment {
             public void run() {
                 if(!listaFaldas.isEmpty()) {
                     Falda faldas= listaFaldas.get(posicion);
-                    //idFalda.setText(faldas.getId());
                     colorFalda.setText(faldas.getColor());
                     descripcionFalda.setText(faldas.getDescripcion());
                     String urlfoto = path + faldas.getUrl();
                     Picasso.with(v.getContext()).load(urlfoto).into(Faldas_View);
-                    mAttacher.update();
                     if (faldas.getPrecio().isEmpty()){
                         precioFalda.setText("---");
                     }else {

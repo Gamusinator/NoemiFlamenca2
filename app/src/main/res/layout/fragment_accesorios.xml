@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/productos_color"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/textViewColorAccesoriosResultado"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/precio_productos"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -67,8 +67,8 @@
         android:id="@+id/infoA2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp">
+        android:paddingTop="4sp"
+        android:paddingBottom="4dp">
         <TextView
             android:id="@+id/textViewDescripcionAccesorios"
             android:layout_width="match_parent"
@@ -88,10 +88,10 @@
             android:id="@+id/botonAnteriorAccesorios"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
             android:text="@string/galeria_anterior"
             android:layout_weight="1"/>
-        <ImageView
+
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageViewAccesorios"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
