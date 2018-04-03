@@ -68,7 +68,7 @@ public class Fragment_faldas extends Fragment {
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_faldas, container, false);
 
-        listaFaldas =new ArrayList<Falda>();
+        listaFaldas =new ArrayList<>();
 
         btnAnteriorFalda = v.findViewById(R.id.botonAnteriorFaldas);
         btnSiguienteFalda = v.findViewById(R.id.botonSiguienteFalda);
@@ -94,6 +94,7 @@ public class Fragment_faldas extends Fragment {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
+                    modoFoto.setText(R.string.modo_foto);
                     isImageFitToScreen=false;
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
@@ -103,6 +104,7 @@ public class Fragment_faldas extends Fragment {
                     faldas.setPadding(16,0,16,50);
 
                 }else{
+                    modoFoto.setText(R.string.volver_modo_foto);
                     isImageFitToScreen=true;
                     barra.hide();
                     fab.setVisibility(View.GONE);

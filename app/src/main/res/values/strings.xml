@@ -20,6 +20,7 @@
     <string name="productos_color">Color:\u0020</string>
     <string name="precio_productos">Precio:\u0020</string>
     <string name="banner_ad_unit_id">ca-app-pub-6311459401782434/1432091661</string>
-    <string name="modo_foto">Modo Foto</string>
+    <string name="modo_foto">Ampliar Imagen</string>
+    <string name="volver_modo_foto">Volver</string>
 
 </resources>

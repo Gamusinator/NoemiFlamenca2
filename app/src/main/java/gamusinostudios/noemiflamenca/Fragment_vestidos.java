@@ -93,6 +93,7 @@ public class Fragment_vestidos extends Fragment {
             @Override
             public void onClick(View v) {
                 if(isImageFitToScreen) {
+                    modoFoto.setText(R.string.modo_foto);
                     isImageFitToScreen=false;
                     barra.show();
                     fab.setVisibility(View.VISIBLE);
@@ -102,6 +103,7 @@ public class Fragment_vestidos extends Fragment {
                     vestidos.setPadding(16,0,16,50);
 
                 }else{
+                    modoFoto.setText(R.string.volver_modo_foto);
                     isImageFitToScreen=true;
                     barra.hide();
                     fab.setVisibility(View.GONE);

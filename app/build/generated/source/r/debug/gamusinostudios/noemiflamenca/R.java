@@ -3989,7 +3989,8 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0d0061;
     public static final int store_picture_message=0x7f0d0062;
     public static final int store_picture_title=0x7f0d0063;
-    public static final int youtube=0x7f0d0064;
+    public static final int volver_modo_foto=0x7f0d0064;
+    public static final int youtube=0x7f0d0065;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0e0000;
