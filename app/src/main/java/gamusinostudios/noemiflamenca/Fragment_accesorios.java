@@ -61,7 +61,7 @@ public class Fragment_accesorios extends Fragment {
     private Accesorio accesorio;
     private List<Accesorio> listaAccesorios;
     private int posicionA = 0, total;
-    private String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/accesorios/";
+    private String path = "http://ec2-35-177-65-76.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/accesorios/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,7 +140,7 @@ public class Fragment_accesorios extends Fragment {
 
     private String mostrar(){
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://35.177.198.220/noemiFlamenca/scripts/bajarAccesorios.php");
+        HttpPost httppost = new HttpPost("http://35.177.65.76//noemiFlamenca/scripts/bajarAccesorios.php");
         httppost.setHeader("Authorization", "Basic "+ Base64.encodeToString("scudgamu:2on2esdepros".getBytes(),Base64.URL_SAFE|Base64.NO_WRAP));
         String resultado="";
         HttpResponse response;

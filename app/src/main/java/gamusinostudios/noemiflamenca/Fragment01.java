@@ -51,7 +51,7 @@ public class Fragment01 extends Fragment {
     AdView publi;
     FloatingActionButton fab;
     boolean isImageFitToScreen;
-    String path = "http://35.177.198.220/noemiFlamenca/imagenes/galeria/";
+    String path = "http://35.177.65.76/noemiFlamenca/imagenes/galeria/";
     String[] nombresArchivos;
     int i = 0;
     int total;
@@ -132,7 +132,7 @@ public class Fragment01 extends Fragment {
 
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://35.177.198.220/noemiFlamenca/scripts/galeria.php");
+        HttpPost httppost = new HttpPost("http://35.177.65.76/noemiFlamenca/scripts/galeria.php");
         //autentificacio
         httppost.setHeader("Authorization", "Basic "+ Base64.encodeToString("scudgamu:2on2esdepros".getBytes(),Base64.URL_SAFE|Base64.NO_WRAP));
 

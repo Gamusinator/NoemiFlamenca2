@@ -60,7 +60,7 @@ public class Fragment_vestidos extends Fragment {
     private Vestido vestido;
     private List<Vestido> listaVestidos;
     private int posicion = 0, total;
-    private String path = "http://ec2-35-177-198-220.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/vestidos/";
+    private String path = "http://ec2-35-177-65-76.eu-west-2.compute.amazonaws.com/noemiFlamenca/imagenes/vestidos/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,7 +139,7 @@ public class Fragment_vestidos extends Fragment {
 
     private String mostrar(){
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://35.177.198.220/noemiFlamenca/scripts/bajarVestidos.php");
+        HttpPost httppost = new HttpPost("http://35.177.65.76/noemiFlamenca/scripts/bajarVestidos.php");
         //autentificacio
         httppost.setHeader("Authorization", "Basic "+ Base64.encodeToString("scudgamu:2on2esdepros".getBytes(),Base64.URL_SAFE|Base64.NO_WRAP));
 
